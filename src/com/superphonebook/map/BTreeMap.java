@@ -1,5 +1,6 @@
 package com.superphonebook.map;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Comparator;
@@ -12,6 +13,8 @@ import java.util.concurrent.LinkedBlockingQueue;
 
 public class BTreeMap<K extends Comparable<K>,V> implements Map<K, V>{
     
+    private static final long serialVersionUID = 3482063191385297354L;
+
     private static int DEFAULT_M = 2;
     
     private int m;
