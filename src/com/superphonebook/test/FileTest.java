@@ -17,7 +17,7 @@ public class FileTest extends AndroidTestCase {
     }
     
     public void testRead() throws Exception{
-	BTreeMap<String,Person> map = FileUtil.readPerson();
+	BTreeMap<String,Person> map = FileUtil.readMap();
 	map.print();
     }
 }

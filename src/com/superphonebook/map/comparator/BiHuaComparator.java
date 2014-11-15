@@ -3,7 +3,7 @@ import java.util.Comparator;
 import java.util.Properties;
 import java.util.Scanner;
 
-//±Ê»­±È½ÏÆ÷
+//ï¿½Ê»ï¿½ï¿½È½ï¿½ï¿½ï¿½
 public class BiHuaComparator implements Comparator<String> {
 
     public int compare(String arg0, String arg1) {
@@ -35,6 +35,7 @@ class Chinese {
     private static Properties strokesMap = new Properties();
 
     static {
+	@SuppressWarnings("resource")
 	Scanner in = new Scanner(
 		Chinese.class.getResourceAsStream("Stroke.csv"));
 	String temp;

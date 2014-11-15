@@ -1,6 +1,5 @@
 package com.superphonebook.map;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Comparator;
@@ -13,6 +12,7 @@ import java.util.concurrent.LinkedBlockingQueue;
 
 public class BTreeMap<K extends Comparable<K>,V> implements Map<K, V>{
     
+    @SuppressWarnings("unused")
     private static final long serialVersionUID = 3482063191385297354L;
 
     private static int DEFAULT_M = 2;
@@ -65,6 +65,7 @@ public class BTreeMap<K extends Comparable<K>,V> implements Map<K, V>{
         keySet = new TreeSet<K>(keyComparator);
     }
     
+    @SuppressWarnings("unchecked")
     public V get(Object k) {
 	K key = (K)k;
 	int index = 0;
@@ -99,6 +100,7 @@ public class BTreeMap<K extends Comparable<K>,V> implements Map<K, V>{
         return value;
     }
     
+    @SuppressWarnings("unchecked")
     public V remove(Object key) {
 	V value = get(key);
 	Pair p = new Pair();
@@ -129,7 +131,7 @@ public class BTreeMap<K extends Comparable<K>,V> implements Map<K, V>{
     }
 
     public Set<java.util.Map.Entry<K, V>> entrySet() {
-	//TODO ����Ҫʵ����������ɡ���
+	//TODO 这个不需要用到
 	return null;
     }
 

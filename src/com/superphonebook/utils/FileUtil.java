@@ -20,7 +20,11 @@ public class FileUtil {
 	    .getAbsolutePath();
     private static String DATA_URL = PATH + "/phonebook.txt";
     
-    public static BTreeMap<String,Person> readPerson() {
+    /**
+     * 读取文件中的数据
+     * @return 以map集合储存的数据
+     */
+    public static BTreeMap<String,Person> readMap() {
 	BTreeMap<String,Person> map = new BTreeMap<String, Person>(new PinYinComparator());
 	InputStreamReader read;
 	try {
@@ -49,6 +53,10 @@ public class FileUtil {
 	
     }
     
+    /**
+     * 将数据保存进文件中
+     * @param map 内存中的数据
+     */
     public static void writeMap(BTreeMap<String,Person> map) {
 	FileWriter fw = null;
 	

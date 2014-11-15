@@ -1,35 +1,18 @@
 package com.superphonebook.dao;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.StreamCorruptedException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-import android.os.Environment;
-
 import com.superphonebook.map.BTreeMap;
-import com.superphonebook.map.comparator.PinYinComparator;
 import com.superphonebook.model.Person;
+import com.superphonebook.utils.FileUtil;
 
 public class PersonDao implements IDao<Person>{
     private BTreeMap<String,Person> map;
-    
-    
-    public BTreeMap<String, Person> getMap() {
-        return map;
-    }
-
-    public void setMap(BTreeMap<String, Person> map) {
-        this.map = map;
-    }
 
     public PersonDao() {
+	this.map = FileUtil.readMap();
     }
 
     public PersonDao(BTreeMap<String, Person> map) {
@@ -38,8 +21,6 @@ public class PersonDao implements IDao<Person>{
 
     /**
      * 通过姓名查询联系人，返回联系人的集合
-     * 
-     * @author Wealong
      */
     public List<Person> find(Object key) {
 	String regex = (String) key + ".+";
@@ -52,29 +33,41 @@ public class PersonDao implements IDao<Person>{
 	return persons;
     }
 
+    /**
+     * 插入联系人
+     */
     public void insert(Person p) {
 	map.put(p.getName(), p);
+	FileUtil.writeMap(map);
     }
-
+    /**
+     * 删除联系人
+     */
     public void delete(Person p) {
-	// TODO Auto-generated method stub
-	
+	map.remove(p.getName());
+	FileUtil.writeMap(map);
     }
-
+    /**
+     * 更新联系人数据
+     */
     public void update(Person p) {
-	// TODO Auto-generated method stub
-	
+	map.remove(p.getName());
+	map.put(p.getName(), p);
+	FileUtil.writeMap(map);
     }
-
+    /**
+     * 获得所有联系人列表
+     */
     public List<Person> findAll() {
-	// TODO Auto-generated method stub
-	return null;
+	List<Person> persons = new ArrayList<Person>();
+	for(String name : map.keySet()) {
+	    persons.add(map.get(name));
+	}
+	return persons;
     }
 
     /**
      * 通过名字获取联系人，返回联系人
-     * 
-     * @author Wealong
      */
     public Person get(Object key) {
 	return map.get(key);
