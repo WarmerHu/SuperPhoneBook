@@ -12,6 +12,11 @@ public class Person implements Serializable{
 	this.name = name;
 	this.number = number;
     }
+    public Person(String line) {
+	String personString[] = line.split(",");
+	this.setName(personString[0]);
+	this.setNumber(personString[1]);
+    }
     public String getName() {
         return name;
     }
@@ -23,5 +28,8 @@ public class Person implements Serializable{
     }
     public void setNumber(String number) {
         this.number = number;
+    }
+    public String toString() {
+	return (getName() + "," + getNumber() + "\n");
     }
 }

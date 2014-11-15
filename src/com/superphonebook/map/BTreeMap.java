@@ -172,10 +172,6 @@ public class BTreeMap<K extends Comparable<K>,V> implements Map<K, V>{
                 }
             }
         }
-        for(V v : values()) {
-            System.out.println(v);
-        }
-        
     }
     
     private class BTreeNode {

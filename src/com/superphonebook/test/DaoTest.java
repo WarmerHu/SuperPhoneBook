@@ -35,13 +35,10 @@ public class DaoTest extends AndroidTestCase {
 	personDao.insert(new Person("伟二", "111111111111111"));
 	personDao.insert(new Person("龙三", "111111111111111"));
 	personDao.getMap().print();
-	personDao.writePerson();
     }
     
     public void testRead() throws Exception{
 	PersonDao dao = new PersonDao();
-	dao.readPerson();
-	Log.d("DDDDDDDDDDDDD","Dddddddddddd");
 	dao.getMap().print();
     }
 }

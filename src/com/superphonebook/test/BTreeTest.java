@@ -1,11 +1,7 @@
 package com.superphonebook.test;
 
-import java.util.List;
-
 import android.test.AndroidTestCase;
-import android.util.Log;
 
-import com.superphonebook.dao.PersonDao;
 import com.superphonebook.map.BTreeMap;
 import com.superphonebook.model.Person;
 
