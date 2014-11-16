@@ -8,7 +8,7 @@ import com.superphonebook.map.BTreeMap;
 import com.superphonebook.model.Person;
 import com.superphonebook.utils.FileUtil;
 
-public class PersonDao implements IDao<Person>{
+public class PersonDao implements IPersonDao{
     private BTreeMap<String,Person> map;
 
     public PersonDao() {
@@ -47,6 +47,7 @@ public class PersonDao implements IDao<Person>{
 	map.remove(p.getName());
 	FileUtil.writeMap(map);
     }
+    
     /**
      * 更新联系人数据
      */
@@ -55,6 +56,7 @@ public class PersonDao implements IDao<Person>{
 	map.put(p.getName(), p);
 	FileUtil.writeMap(map);
     }
+    
     /**
      * 获得所有联系人列表
      */
@@ -71,5 +73,16 @@ public class PersonDao implements IDao<Person>{
      */
     public Person get(Object key) {
 	return map.get(key);
+    }
+
+    /**
+     * 获得按拼音排序的名称列表
+     */
+    public List<String> getPinYinNameList() {
+	List<String> persons = new ArrayList<String>();
+	for(String name : map.keySet()) {
+	    persons.add(name);
+	}
+	return persons;
     }
 }

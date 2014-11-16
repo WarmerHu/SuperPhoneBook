@@ -1,5 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">超级号簿</string>
+    <string name="app_name">phonecall</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="menu_settings">Settings</string>
+    <string name="search_people">搜索联系人</string>
+    <string name="new_people">新建联系人</string>
 
 </resources>

@@ -2,7 +2,36 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#A88462"
+    android:focusable="true"  
+   	android:focusableInTouchMode="true"
     tools:context=".MainActivity" >
 
+	    <EditText
+	        android:id="@+id/search"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:drawableLeft="@drawable/search"
+	        android:hint="@string/search_people" >
+
+	    </EditText>  
+
+        <ListView
+            android:id="@+id/lv_userlist"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/newpeople"
+            android:layout_below="@+id/search" >
+
+        </ListView>
+
+       <Button
+           android:id="@+id/newpeople"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_alignParentBottom="true"
+           android:layout_centerHorizontal="true"
+           android:text="@string/new_people"
+           android:textColor="#ffffff" />
 
 </RelativeLayout>
