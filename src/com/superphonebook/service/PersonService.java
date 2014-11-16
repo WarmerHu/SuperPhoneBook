@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.superphonebook.dao.IPersonDao;
 import com.superphonebook.dao.PersonDao;
+import com.superphonebook.model.Person;
 
 public class PersonService implements IPersonService {
     
@@ -15,6 +16,10 @@ public class PersonService implements IPersonService {
 
     public List<String> getDefaultNameList() {
 	return personDao.getPinYinNameList();
+    }
+
+    public void savePerson(Person p) {
+	personDao.insert(p);
     }
 
 }

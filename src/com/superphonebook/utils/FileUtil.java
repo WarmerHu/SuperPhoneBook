@@ -19,7 +19,19 @@ public class FileUtil {
     public static final String PATH = Environment.getExternalStorageDirectory()
 	    .getAbsolutePath();
     private static String DATA_URL = PATH + "/phonebook.txt";
+    private static File file;
     
+    static {
+	file = new File(DATA_URL);
+	if(!file.exists()) {
+	    try {
+		file.createNewFile();
+	    } catch (IOException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	    }
+	}
+    }
     /**
      * 读取文件中的数据
      * @return 以map集合储存的数据
@@ -29,7 +41,7 @@ public class FileUtil {
 	InputStreamReader read;
 	try {
 	    read = new InputStreamReader(
-	    	new FileInputStream(new File(DATA_URL)), "UTF-8");
+	    	new FileInputStream(file), "UTF-8");
 	    BufferedReader reader = new BufferedReader(read);
 		String line;
 		while ((line = reader.readLine()) != null) {
@@ -61,7 +73,7 @@ public class FileUtil {
 	FileWriter fw = null;
 	
 	try {
-	    fw = new FileWriter(new File(DATA_URL));
+	    fw = new FileWriter(file);
 	    for(String name : map.keySet()) {
 		fw.write(map.get(name).toString());
 	    }

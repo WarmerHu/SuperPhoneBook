@@ -17,30 +17,28 @@ public final class R {
     }
     public static final class id {
         public static final int ScrollView01=0x7f070003;
-        public static final int address=0x7f07000c;
-        public static final int address_02=0x7f070014;
-        public static final int bt_edit=0x7f070017;
-        public static final int bt_return=0x7f070012;
-        public static final int bt_save=0x7f070011;
-        public static final int bt_send=0x7f070016;
-        public static final int email=0x7f07000e;
-        public static final int email_02=0x7f070015;
+        public static final int address=0x7f07000b;
+        public static final int address_02=0x7f070012;
+        public static final int bt_cancel=0x7f070010;
+        public static final int bt_edit=0x7f070015;
+        public static final int bt_save=0x7f07000f;
+        public static final int bt_send=0x7f070014;
+        public static final int email=0x7f07000c;
+        public static final int email_02=0x7f070013;
         public static final int family_number=0x7f070009;
         public static final int image_button=0x7f070005;
-        public static final int job=0x7f07000a;
         public static final int ll_01=0x7f070004;
         public static final int lv_userlist=0x7f070001;
-        public static final int menu_settings=0x7f070018;
+        public static final int menu_settings=0x7f070016;
         public static final int mobilephone=0x7f070007;
-        public static final int mobilephone_02=0x7f070013;
+        public static final int mobilephone_02=0x7f070011;
         public static final int newpeople=0x7f070002;
-        public static final int other=0x7f07000f;
-        public static final int remark=0x7f070010;
+        public static final int other=0x7f07000d;
+        public static final int remark=0x7f07000e;
         public static final int search=0x7f070000;
         public static final int unit_number=0x7f070008;
-        public static final int unitname=0x7f07000b;
+        public static final int unitname=0x7f07000a;
         public static final int username=0x7f070006;
-        public static final int zipcode=0x7f07000d;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
@@ -52,7 +50,19 @@ public final class R {
         public static final int activity_main=0x7f060000;
     }
     public static final class string {
+        public static final int _address=0x7f04000b;
+        public static final int _cancel=0x7f040010;
+        public static final int _homeNumber=0x7f040009;
+        public static final int _officeNumber=0x7f040007;
+        public static final int _other=0x7f04000d;
+        public static final int _personName=0x7f040005;
+        public static final int _phoneNumber=0x7f040006;
+        public static final int _remark=0x7f04000e;
+        public static final int _save=0x7f04000f;
+        public static final int _touxiang=0x7f040008;
+        public static final int _unitname=0x7f04000a;
         public static final int app_name=0x7f040000;
+        public static final int e_mail=0x7f04000c;
         public static final int hello_world=0x7f040001;
         public static final int menu_settings=0x7f040002;
         public static final int new_people=0x7f040004;

@@ -34,11 +34,8 @@ public class MainActivity extends Activity implements OnClickListener {
 	nameListView = (ListView) findViewById(R.id.lv_userlist);
 	newPeopleButton = (Button) findViewById(R.id.newpeople);
 
-	nameList = personService.getDefaultNameList();
+	f5View();
 	newPeopleButton.setOnClickListener(this);
-	ArrayAdapter<String> myArrayAdapter = new ArrayAdapter<String>(this,
-		R.layout.person_name_list_item, nameList);
-	nameListView.setAdapter(myArrayAdapter);
 	nameListView.setOnItemClickListener(new OnItemClickListener() {
 
 	    public void onItemClick(AdapterView<?> adapterView, View view,
@@ -57,6 +54,19 @@ public class MainActivity extends Activity implements OnClickListener {
 	// Inflate the menu; this adds items to the action bar if it is present.
 	getMenuInflater().inflate(R.menu.activity_main, menu);
 	return true;
+    }
+    
+    @Override
+    protected void onResume() {
+        super.onResume();
+        f5View();
+    }
+
+    //更新数据刷新界面
+    private void f5View() {
+	nameList = personService.getDefaultNameList();
+	nameListView.setAdapter(new ArrayAdapter<String>(this,
+		R.layout.person_name_list_item, nameList));
     }
 
     public void onClick(View arg0) {
