@@ -2,129 +2,69 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" 
-    android:weightSum="2">
-    <LinearLayout 
+    android:orientation="vertical"
+    android:weightSum="2" >
+
+    <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_weight="0.9"
-        android:background="#90EE90"
-        android:orientation="horizontal">
-        <TextView 
+        android:background="#87CEEB"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/nametextview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
-            android:text="备注"
             android:textColor="#FFFFFF"
-            android:textSize="50px"/>
-              
+            android:textSize="50sp" />
     </LinearLayout>
-    <LinearLayout 
+
+    <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:background="#8B8878"
-        android:orientation="vertical">
-         <LinearLayout 
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_weight="0.25">
-                <TextView 
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="手机:"
-                    android:textSize="15dp"
-                    android:textColor="#FFFFFF"/>
-                <EditText 
-                    android:id="@+id/mobilephone_02"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="top"
-                    android:hint="手机"
-                    android:phoneNumber="true"/>
-                
-            </LinearLayout>
-        	<LinearLayout 
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_weight="0.25">
-                <TextView 
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="单位名称"
-                    android:textSize="15dp"
-                    android:textColor="#FFFFFF"/>
-                <EditText 
-                    android:id="@+id/address_02"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="top"
-                    android:hint="单位名称"
-                    android:phoneNumber="true"/>
-                
-            </LinearLayout>
-            <LinearLayout 
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_weight="0.25">
-                <TextView 
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="E-mail"
-                    android:textSize="15dp"
-                    android:textColor="#FFFFFF"/>
-                <EditText 
-                    android:id="@+id/email_02"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="top"
-                    android:hint="E-mail"
-                    android:phoneNumber="true"/>
-                
-            </LinearLayout>
-            <LinearLayout 
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_weight="0.25"></LinearLayout>
-            
+        android:background="#FFFFFF"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/phonetextview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/_phoneNumber"
+            android:paddingLeft="6dip"
+            android:gravity="center_vertical"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:minHeight="?android:attr/listPreferredItemHeight"
+            android:textColor="#000000" />
     </LinearLayout>
-    <LinearLayout 
+
+    <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_weight="0.1"
         android:background="#4D4D4D"
-        android:orientation="horizontal">
-            <Button 
-                android:id="@+id/bt_send"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="发送"
-                android:textColor="#ffffff"
-                android:layout_weight="0.05"/>
-            <Button 
-                android:id="@+id/bt_edit"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="编辑"
-                android:textColor="#ffffff"
-                android:layout_weight="0.05"/>
-        
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/bt_send"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_marginTop="10dp"
+            android:layout_weight="1"
+            android:text="@string/_send"
+            android:textColor="#ffffff" />
+
+        <Button
+            android:id="@+id/bt_edit"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_marginTop="10dp"
+            android:layout_weight="1"
+            android:text="@string/_edit"
+            android:textColor="#ffffff" />
     </LinearLayout>
-    
 
 </LinearLayout>

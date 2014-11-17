@@ -13,6 +13,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 
 import com.superphonebook.R;
@@ -24,6 +25,8 @@ public class MainActivity extends Activity implements OnClickListener {
     private Button newPeopleButton;
     private List<String> nameList = new ArrayList<String>();
     private IPersonService personService;
+    
+    private EditText searchText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +36,7 @@ public class MainActivity extends Activity implements OnClickListener {
 		.getPersonService();
 	nameListView = (ListView) findViewById(R.id.lv_userlist);
 	newPeopleButton = (Button) findViewById(R.id.newpeople);
-
+	searchText = (EditText) findViewById(R.id.search);
 	f5View();
 	newPeopleButton.setOnClickListener(this);
 	nameListView.setOnItemClickListener(new OnItemClickListener() {
@@ -67,6 +70,7 @@ public class MainActivity extends Activity implements OnClickListener {
 	nameList = personService.getDefaultNameList();
 	nameListView.setAdapter(new ArrayAdapter<String>(this,
 		R.layout.person_name_list_item, nameList));
+	searchText.setHint("搜索" + nameList.size() + "个联系人");
     }
 
     public void onClick(View arg0) {

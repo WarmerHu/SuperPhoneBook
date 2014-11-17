@@ -74,7 +74,7 @@ public class BTreeMap<K extends Comparable<K>,V> implements Map<K, V>{
 	while (node != null) {
 	    index = getFromNode(node,key);
 	    
-	    if(index >= 0 && index < node.pairs.size() && node.pairs.get(index).k == key) {
+	    if(index >= 0 && index < node.pairs.size() && node.pairs.get(index).k.compareTo(key) == 0) {
 		return node.pairs.get(index).v;
 	    }else {
 		node = node.children.get(index);

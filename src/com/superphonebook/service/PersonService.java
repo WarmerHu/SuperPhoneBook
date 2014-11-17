@@ -22,4 +22,8 @@ public class PersonService implements IPersonService {
 	personDao.insert(p);
     }
 
+    public Person getPersonByName(String personName) {
+	return personDao.get(personName);
+    }
+
 }

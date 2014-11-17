@@ -10,4 +10,6 @@ public interface IPersonService {
 
     void savePerson(Person p);
 
+    Person getPersonByName(String personName);
+
 }

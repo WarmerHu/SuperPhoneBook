@@ -25,6 +25,8 @@ public class Person implements Serializable{
 	String personString[] = line.split(",");
 	this.setName(personString[0]);
 	this.setNumber(personString[1]);
+	if(personString.length <= 2 ) 
+	    return ;
 	this.setUnitNumber(personString[2]);
 	this.setFamilyNumber(personString[3]);
 	this.setUnitName(personString[4]);

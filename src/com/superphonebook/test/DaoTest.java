@@ -8,7 +8,7 @@ import android.util.Log;
 import com.superphonebook.dao.PersonDao;
 import com.superphonebook.map.BTreeMap;
 import com.superphonebook.model.Person;
-import com.superphonebook.utils.RandomHan;
+import com.superphonebook.utils.RandomName;
 
 public class DaoTest extends AndroidTestCase {
     
@@ -41,12 +41,10 @@ public class DaoTest extends AndroidTestCase {
     
     public void testWrite()throws Exception{
 	BTreeMap<String,Person> bTree = new BTreeMap<String,Person>();
-	RandomHan r = new RandomHan();
-	for(int i = 0;i<=64;++i) {
-            for(int j = 64;j >= 0; --j ) {
-        	String name = r.getRandomName();
-        	bTree.put(name, new Person(name, "11111111111"));
-            }
+	RandomName r = new RandomName();
+	for(int i = 1;i<=4095;++i) {
+	    String name = r.getRandomName();
+	    bTree.put(name, new Person(name, "11111111111"));
         }
 	PersonDao personDao = new PersonDao(bTree);
 	personDao.insert(new Person(r.getRandomName(), "11111111111"));
