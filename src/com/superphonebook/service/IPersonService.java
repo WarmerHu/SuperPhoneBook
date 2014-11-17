@@ -12,4 +12,6 @@ public interface IPersonService {
 
     Person getPersonByName(String personName);
 
+    List<String> findNameListbyString(String s);
+
 }

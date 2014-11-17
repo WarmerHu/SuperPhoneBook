@@ -3,8 +3,18 @@ import java.util.Comparator;
 import java.util.Properties;
 import java.util.Scanner;
 
-//�ʻ��Ƚ���
+//笔画数比较器
 public class BiHuaComparator implements Comparator<String> {
+    
+    private BiHuaComparator() {
+    }
+    private static BiHuaComparator biHuaComparator;
+    public static BiHuaComparator getBiHuaComparator() {
+	if(biHuaComparator == null) {
+	    biHuaComparator = new BiHuaComparator();
+	}
+	return biHuaComparator;
+    }
 
     public int compare(String arg0, String arg1) {
 	int codepoint1 = 0;

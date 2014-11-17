@@ -4,8 +4,20 @@ import java.text.RuleBasedCollator;
 import java.util.Comparator;
 import java.util.Locale;
 
-//Æ´Òô±È½ÏÆ÷
+//æ‹¼éŸ³æ¯”è¾ƒå™¨
 public class PinYinComparator implements Comparator<String> {
+    
+    private static PinYinComparator pinYinComparator;
+    
+    private PinYinComparator() {
+    }
+    
+    public static PinYinComparator getPinYinComparator() {
+	if(pinYinComparator == null) {
+	    pinYinComparator = new PinYinComparator();
+	}
+	return pinYinComparator;
+    }
     
     RuleBasedCollator collator = (RuleBasedCollator)Collator.getInstance(Locale.CHINA);
 

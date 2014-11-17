@@ -1,12 +1,15 @@
 package com.superphonebook.android.activity;
 
-import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
@@ -18,16 +21,19 @@ import android.widget.ListView;
 
 import com.superphonebook.R;
 import com.superphonebook.SuperPhoneBookApplication;
+import com.superphonebook.map.comparator.BiHuaComparator;
 import com.superphonebook.service.IPersonService;
 
-public class MainActivity extends Activity implements OnClickListener {
+public class MainActivity extends Activity implements OnClickListener, TextWatcher {
+    
     private ListView nameListView;
     private Button newPeopleButton;
-    private List<String> nameList = new ArrayList<String>();
-    private IPersonService personService;
-    
     private EditText searchText;
-
+    
+    private List<String> nameList;
+    private IPersonService personService;
+    private ArrayAdapter<String> myArrayAdapter;
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 	super.onCreate(savedInstanceState);
@@ -37,7 +43,13 @@ public class MainActivity extends Activity implements OnClickListener {
 	nameListView = (ListView) findViewById(R.id.lv_userlist);
 	newPeopleButton = (Button) findViewById(R.id.newpeople);
 	searchText = (EditText) findViewById(R.id.search);
-	f5View();
+	nameList = personService.getDefaultNameList();
+	myArrayAdapter = new ArrayAdapter<String>(this,
+		R.layout.person_name_list_item, nameList);
+	nameListView.setAdapter(myArrayAdapter);
+	searchText.setHint("搜索" + nameList.size() + "个联系人");
+	myArrayAdapter.notifyDataSetChanged();
+	
 	newPeopleButton.setOnClickListener(this);
 	nameListView.setOnItemClickListener(new OnItemClickListener() {
 
@@ -50,33 +62,50 @@ public class MainActivity extends Activity implements OnClickListener {
 	    }
 
 	});
+	
+	searchText.addTextChangedListener(this);
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-	// Inflate the menu; this adds items to the action bar if it is present.
 	getMenuInflater().inflate(R.menu.activity_main, menu);
 	return true;
     }
     
     @Override
+    public boolean onMenuItemSelected(int featureId, MenuItem item) {
+	switch(item.getItemId()) {
+	case R.id.sortbybihua:
+	    Collections.sort(nameList, BiHuaComparator.getBiHuaComparator());
+	    myArrayAdapter.notifyDataSetChanged();
+	    break;
+	}
+        return super.onMenuItemSelected(featureId, item);
+    }
+    
+    @Override
     protected void onResume() {
         super.onResume();
-        f5View();
-    }
-
-    //更新数据刷新界面
-    private void f5View() {
-	nameList = personService.getDefaultNameList();
-	nameListView.setAdapter(new ArrayAdapter<String>(this,
-		R.layout.person_name_list_item, nameList));
-	searchText.setHint("搜索" + nameList.size() + "个联系人");
+        nameList.clear();
+	nameList.addAll(personService.getDefaultNameList());
+        myArrayAdapter.notifyDataSetChanged();
     }
 
     public void onClick(View arg0) {
 	Intent intent02 = new Intent(MainActivity.this, NewPeopleActivity.class);
 	startActivity(intent02);
-
     }
 
+    public void onTextChanged(CharSequence s, int start, int before, int count) {
+	nameList.clear();
+	nameList.addAll(personService.findNameListbyString(s.toString()));
+	myArrayAdapter.notifyDataSetChanged();
+    }
+    
+    public void afterTextChanged(Editable arg0) {
+    }
+
+    public void beforeTextChanged(CharSequence s, int start, int count,
+	    int after) {
+    }
 }

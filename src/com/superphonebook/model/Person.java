@@ -54,7 +54,7 @@ public class Person implements Serializable{
 		getUnitName() + "," + 
 		getAddress() + "," + 
 		getEmail() + "," + 
-		getRemark() + "," + 
+		getRemark() + 
 		"\n");
     }
     

@@ -1,14 +1,11 @@
 package com.superphonebook.test;
 
-import java.util.List;
-
 import android.test.AndroidTestCase;
-import android.util.Log;
 
 import com.superphonebook.dao.PersonDao;
 import com.superphonebook.map.BTreeMap;
 import com.superphonebook.model.Person;
-import com.superphonebook.utils.RandomName;
+import com.superphonebook.utils.RandomUtil;
 
 public class DaoTest extends AndroidTestCase {
     
@@ -21,11 +18,6 @@ public class DaoTest extends AndroidTestCase {
         	bTree.put(a + "" + b,new Person( a + "" + b,"1111111111111"));
             }
         }
-	PersonDao personDao = new PersonDao(bTree);
-	List<Person> persons = personDao.find("p");
-	for(Person p : persons) {
-	    Log.d(p.getName(), p.getNumber());
-	}
     }
     
     public void testFindAll() throws Exception{
@@ -41,12 +33,12 @@ public class DaoTest extends AndroidTestCase {
     
     public void testWrite()throws Exception{
 	BTreeMap<String,Person> bTree = new BTreeMap<String,Person>();
-	RandomName r = new RandomName();
+	RandomUtil r = new RandomUtil();
 	for(int i = 1;i<=4095;++i) {
 	    String name = r.getRandomName();
-	    bTree.put(name, new Person(name, "11111111111"));
+	    bTree.put(name, new Person(name, r.getRandomPhone()));
         }
 	PersonDao personDao = new PersonDao(bTree);
-	personDao.insert(new Person(r.getRandomName(), "11111111111"));
+	personDao.insert(new Person(r.getRandomName(), r.getRandomPhone()));
     }
 }

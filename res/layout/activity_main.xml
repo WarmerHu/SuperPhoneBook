@@ -13,7 +13,6 @@
 	        android:layout_height="wrap_content"
 	        android:drawableLeft="@drawable/search"
 	        android:hint="@string/search_people" >
-
 	    </EditText>  
 
         <ListView

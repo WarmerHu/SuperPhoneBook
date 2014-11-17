@@ -37,7 +37,7 @@ public class FileUtil {
      * @return 以map集合储存的数据
      */
     public static BTreeMap<String,Person> readMap() {
-	BTreeMap<String,Person> map = new BTreeMap<String, Person>(new PinYinComparator());
+	BTreeMap<String,Person> map = new BTreeMap<String, Person>(PinYinComparator.getPinYinComparator());
 	InputStreamReader read;
 	try {
 	    read = new InputStreamReader(

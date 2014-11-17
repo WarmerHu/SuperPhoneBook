@@ -20,15 +20,14 @@ public class PersonDao implements IPersonDao{
     }
 
     /**
-     * 通过姓名查询联系人，返回联系人的集合
+     * 通过姓名查询联系人，返回联系人姓名的集合
      */
-    public List<Person> find(Object key) {
-	String regex = (String) key + ".+";
-	List<Person> persons = new ArrayList<Person>();
+    public List<String> find(Object key) {
+	List<String> persons = new ArrayList<String>();
 	Set<String> keySet = map.keySet();
 	for(String name : keySet) {
-	    if(name.matches(regex))
-		persons.add(map.get(name));
+	    if(name.indexOf(key.toString()) >= 0)
+		persons.add(name);
 	}
 	return persons;
     }
@@ -85,4 +84,5 @@ public class PersonDao implements IPersonDao{
 	}
 	return persons;
     }
+
 }

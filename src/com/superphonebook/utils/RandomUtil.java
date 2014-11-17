@@ -2,7 +2,7 @@ package com.superphonebook.utils;
 
 import java.util.Random;
 
-public class RandomName {
+public class RandomUtil {
     private Random ran = new Random();
     private String[] frist = { "赵", "钱", "孙", "李", "周", "吴", "郑", "王", "冯",
 	    "陈", "蒋", "沈", "韩", "杨", "朱", "秦", "尤", "许", "何", "吕", "施", "张",
@@ -37,6 +37,7 @@ public class RandomName {
 	    "癫", "呆", "笨", "树", "木", "驴", "蠢", "懒", "萌", "富", "福", "梅", "兰",
 	    "竹", "菊", "神", "鬼", "巫", "侠", "乐", "叔", "姨", "姑", "丈", "剩", "叟",
 	    "妪", "江", "河", "湖", "海", "" };
+    private String[] phone = { "0", "9", "8", "7", "6", "5", "4", "3", "2", "1" };
 
     private String getRandomX(String[] ss) {
 	return ss[ran.nextInt(ss.length)];
@@ -44,5 +45,12 @@ public class RandomName {
 
     public String getRandomName() {
 	return "" + getRandomX(frist) + getRandomX(second) + getRandomX(third);
+    }
+
+    public String getRandomPhone() {
+	return "1" + getRandomX(phone) + getRandomX(phone) + getRandomX(phone)
+		+ getRandomX(phone) + getRandomX(phone) + getRandomX(phone)
+		+ getRandomX(phone) + getRandomX(phone) + getRandomX(phone)
+		+ getRandomX(phone);
     }
 }
