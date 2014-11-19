@@ -44,8 +44,12 @@ public class UserActivity extends Activity implements OnClickListener, OnTouchLi
 	phoneTextView.setText(person.getNumber());
 	nameTextView.setText(person.getName());
 	
-	addDetailTextView("单位电话",person.getUnitName());
+	addDetailTextView("单位电话",person.getUnitNumber());
 	addDetailTextView("家庭电话", person.getFamilyNumber());
+	addDetailTextView("家庭地址", person.getAddress());
+	addDetailTextView("邮箱", person.getEmail());
+	addDetailTextView("单位名称", person.getUnitName());
+	addDetailTextView("备注", person.getRemark());
 
 	editBtn = (Button) findViewById(R.id.bt_edit);
 	sendBtn = (Button) findViewById(R.id.bt_send);
@@ -58,6 +62,7 @@ public class UserActivity extends Activity implements OnClickListener, OnTouchLi
     private void addDetailTextView(String text,String s) {
 	if(StringUtil.isNotBlank(s)) {
 	    TextView v = new TextView(this);
+	    v.setTextAppearance(this, R.style.detailitem);
 	    v.setText(s);
 	    detailLayout.addView(v);
 	}

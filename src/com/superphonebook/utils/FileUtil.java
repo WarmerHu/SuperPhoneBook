@@ -88,4 +88,27 @@ public class FileUtil {
 	    }
 	}
     }
+    
+    /**
+     * 将数据添加到文件的最后一行
+     */
+    public static void append(Person p) {
+	FileWriter fw = null;
+	try {
+	    fw = new FileWriter(file,true);
+	    fw.write(p.toString());
+	    fw.flush();
+	} catch (FileNotFoundException e) {
+	    e.printStackTrace();
+	} catch (IOException e) {
+	    e.printStackTrace();
+	}finally {
+	    try {
+		fw.close();
+	    } catch (IOException e) {
+		e.printStackTrace();
+	    }
+	}
+    }
+    
 }

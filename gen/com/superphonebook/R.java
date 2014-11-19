@@ -21,24 +21,23 @@ public final class R {
     public static final class id {
         public static final int ScrollView01=0x7f080003;
         public static final int address=0x7f08000b;
-        public static final int bt_cancel=0x7f080010;
-        public static final int bt_edit=0x7f080015;
-        public static final int bt_save=0x7f08000f;
-        public static final int bt_send=0x7f080014;
-        public static final int detaillayout=0x7f080012;
+        public static final int bt_cancel=0x7f08000f;
+        public static final int bt_edit=0x7f080014;
+        public static final int bt_save=0x7f08000e;
+        public static final int bt_send=0x7f080013;
+        public static final int detaillayout=0x7f080011;
         public static final int email=0x7f08000c;
         public static final int family_number=0x7f080009;
         public static final int image_button=0x7f080005;
         public static final int ll_01=0x7f080004;
         public static final int lv_userlist=0x7f080001;
         public static final int mobilephone=0x7f080007;
-        public static final int nametextview=0x7f080011;
+        public static final int nametextview=0x7f080010;
         public static final int newpeople=0x7f080002;
-        public static final int other=0x7f08000d;
-        public static final int phonetextview=0x7f080013;
-        public static final int remark=0x7f08000e;
+        public static final int phonetextview=0x7f080012;
+        public static final int remark=0x7f08000d;
         public static final int search=0x7f080000;
-        public static final int sortbybihua=0x7f080016;
+        public static final int sortbybihua=0x7f080015;
         public static final int unit_number=0x7f080008;
         public static final int unitname=0x7f08000a;
         public static final int username=0x7f080006;
@@ -100,5 +99,6 @@ public final class R {
  All customizations that are NOT specific to a particular API-level can go here. 
          */
         public static final int AppTheme=0x7f060001;
+        public static final int detailitem=0x7f060002;
     }
 }

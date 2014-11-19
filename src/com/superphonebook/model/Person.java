@@ -24,12 +24,12 @@ public class Person implements Serializable{
     public Person(String[] personString) {
 	this.setName(personString[0]);
 	this.setNumber(personString[1]);
-	this.setUnitNumber(StringUtil.isBlank(personString[2])?"#":personString[2]);
-	this.setFamilyNumber(StringUtil.isBlank(personString[3])?"#":personString[3]);
-	this.setUnitName(StringUtil.isBlank(personString[4])?"#":personString[4]);
-	this.setAddress(StringUtil.isBlank(personString[5])?"#":personString[5]);
-	this.setEmail(StringUtil.isBlank(personString[6])?"#":personString[6]);
-	this.setRemark(StringUtil.isBlank(personString[7])?"#":personString[7]);
+	this.setUnitNumber(StringUtil.isBlank(personString[2])?"":personString[2]);
+	this.setFamilyNumber(StringUtil.isBlank(personString[3])?"":personString[3]);
+	this.setUnitName(StringUtil.isBlank(personString[4])?"":personString[4]);
+	this.setAddress(StringUtil.isBlank(personString[5])?"":personString[5]);
+	this.setEmail(StringUtil.isBlank(personString[6])?"":personString[6]);
+	this.setRemark(StringUtil.isBlank(personString[7])?"":personString[7]);
     }
     public Person() {
     }

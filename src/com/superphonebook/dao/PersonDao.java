@@ -37,7 +37,7 @@ public class PersonDao implements IPersonDao{
      */
     public void insert(Person p) {
 	map.put(p.getName(), p);
-	FileUtil.writeMap(map);
+	FileUtil.append(p);
     }
     /**
      * 删除联系人
