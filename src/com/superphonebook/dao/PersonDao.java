@@ -37,7 +37,7 @@ public class PersonDao implements IPersonDao{
      */
     public void insert(Person p) {
 	map.put(p.getName(), p);
-	FileUtil.writeMap(map);
+	FileUtil.append(p);
     }
     /**
      * 删除联系人
@@ -83,6 +83,13 @@ public class PersonDao implements IPersonDao{
 	    persons.add(name);
 	}
 	return persons;
+    }
+
+    /**
+     * 查找是否存在该联系人
+     */
+    public boolean contain(Person p) {
+	return map.containsKey(p.getName());
     }
 
 }

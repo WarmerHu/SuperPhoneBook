@@ -21,18 +21,17 @@ public class Person implements Serializable{
 	this.name = name;
 	this.number = number;
     }
-    public Person(String line) {
-	String personString[] = line.split(",");
+    public Person(String[] personString) {
 	this.setName(personString[0]);
 	this.setNumber(personString[1]);
-	if(personString.length <= 2 ) 
-	    return ;
-	this.setUnitNumber(personString[2]);
-	this.setFamilyNumber(personString[3]);
-	this.setUnitName(personString[4]);
-	this.setAddress(personString[5]);
-	this.setEmail(personString[6]);
-	this.setRemark(personString[7]);
+	this.setUnitNumber(StringUtil.isBlank(personString[2])?"":personString[2]);
+	this.setFamilyNumber(StringUtil.isBlank(personString[3])?"":personString[3]);
+	this.setUnitName(StringUtil.isBlank(personString[4])?"":personString[4]);
+	this.setAddress(StringUtil.isBlank(personString[5])?"":personString[5]);
+	this.setEmail(StringUtil.isBlank(personString[6])?"":personString[6]);
+	this.setRemark(StringUtil.isBlank(personString[7])?"":personString[7]);
+    }
+    public Person() {
     }
     public String getName() {
         return name;
@@ -47,50 +46,49 @@ public class Person implements Serializable{
         this.number = number;
     }
     public String toString() {
-	return (getName() + "," + 
-		getNumber() + "," + 
-		getUnitNumber() + "," + 
-		getFamilyNumber() + "," +
-		getUnitName() + "," + 
-		getAddress() + "," + 
-		getEmail() + "," + 
-		getRemark() + 
-		"\n");
+	StringBuffer sb = new StringBuffer(getName() + "," + getNumber() + ",");
+	sb.append(StringUtil.isBlank(unitNumber)?"#,":unitNumber + ",")
+	.append(StringUtil.isBlank(familyNumber)?"#,":familyNumber + ",")
+	.append(StringUtil.isBlank(unitName)?"#,":unitName + ",")
+	.append(StringUtil.isBlank(address)?"#,":address + ",")
+	.append(StringUtil.isBlank(email)?"#,":email + ",")
+	.append(StringUtil.isBlank(remark)?"#\n":remark + "\n");
+	return sb.toString();
     }
     
     //"#"为占位符，表示为空
     public String getUnitNumber() {
-        return StringUtil.isBlank(unitNumber)?"#":unitNumber;
+        return unitNumber;
     }
     public void setUnitNumber(String unitNumber) {
         this.unitNumber = unitNumber;
     }
     public String getFamilyNumber() {
-        return StringUtil.isBlank(familyNumber)?"#":familyNumber;
+        return familyNumber;
     }
     public void setFamilyNumber(String familyNumber) {
         this.familyNumber = familyNumber;
     }
     public String getUnitName() {
-        return StringUtil.isBlank(unitName)?"#":unitName;
+        return unitName;
     }
     public void setUnitName(String unitName) {
         this.unitName = unitName;
     }
     public String getAddress() {
-        return StringUtil.isBlank(address)?"#":address;
+        return address;
     }
     public void setAddress(String address) {
         this.address = address;
     }
     public String getEmail() {
-        return StringUtil.isBlank(email)?"#":email;
+        return email;
     }
     public void setEmail(String email) {
         this.email = email;
     }
     public String getRemark() {
-        return StringUtil.isBlank(remark)?"#":remark;
+        return remark;
     }
     public void setRemark(String remark) {
         this.remark = remark;

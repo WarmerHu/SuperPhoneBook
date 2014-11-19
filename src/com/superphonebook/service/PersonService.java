@@ -19,7 +19,7 @@ public class PersonService implements IPersonService {
 	return personDao.getPinYinNameList();
     }
 
-    public void savePerson(Person p) {
+    public void save(Person p) {
 	personDao.insert(p);
     }
 
@@ -31,6 +31,22 @@ public class PersonService implements IPersonService {
 	if(StringUtil.isNotBlank(s))
 	    return personDao.find(s);
 	else return getDefaultNameList();
+    }
+
+    public void delete(String personName) {
+	personDao.delete(getPersonByName(personName));
+    }
+
+    public void saveOrUpdatePerson(Person p) {
+	if(personDao.contain(p)) {
+	    update(p);
+	}else {
+	    save(p);
+	}
+    }
+
+    public void update(Person p) {
+	personDao.update(p);
     }
 
 }

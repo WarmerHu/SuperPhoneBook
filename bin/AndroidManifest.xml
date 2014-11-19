@@ -10,13 +10,16 @@
 	    android:targetPackage="com.superphonebook">
 	</instrumentation>
 	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+	<uses-permission android:name="android.permission.CALL_PHONE"/>
+	<uses-permission android:name="android.permission.SEND_SMS"/>
 	
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@android:style/Theme.Holo.Light"
-        android:name="SuperPhoneBookApplication" tools:targetApi="11">
+        android:name="SuperPhoneBookApplication" 
+        tools:targetApi="11">
         <activity 
             android:name="com.superphonebook.android.activity.MainActivity"
             android:label="@string/app_name"
