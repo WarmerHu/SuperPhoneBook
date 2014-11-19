@@ -27,7 +27,6 @@ public class FileUtil {
 	    try {
 		file.createNewFile();
 	    } catch (IOException e) {
-		// TODO Auto-generated catch block
 		e.printStackTrace();
 	    }
 	}
@@ -45,19 +44,19 @@ public class FileUtil {
 	    BufferedReader reader = new BufferedReader(read);
 		String line;
 		while ((line = reader.readLine()) != null) {
-		    Person p = new Person(line);
-		    map.put(p.getName(), p);
+		    String[] ss = line.split(",");
+		    if(ss.length >= 8) {
+			Person p = new Person(ss);
+			map.put(p.getName(), p);
+		    }
 		}
 	    reader.close();
 	    read.close();
 	} catch (UnsupportedEncodingException e) {
-	    // TODO Auto-generated catch block
 	    e.printStackTrace();
 	} catch (FileNotFoundException e) {
-	    // TODO Auto-generated catch block
 	    e.printStackTrace();
 	} catch (IOException e) {
-	    // TODO Auto-generated catch block
 	    e.printStackTrace();
 	}
 	
@@ -78,16 +77,13 @@ public class FileUtil {
 		fw.write(map.get(name).toString());
 	    }
 	} catch (FileNotFoundException e) {
-	    // TODO Auto-generated catch block
 	    e.printStackTrace();
 	} catch (IOException e) {
-	    // TODO Auto-generated catch block
 	    e.printStackTrace();
 	}finally {
 	    try {
 		fw.close();
 	    } catch (IOException e) {
-		// TODO Auto-generated catch block
 		e.printStackTrace();
 	    }
 	}

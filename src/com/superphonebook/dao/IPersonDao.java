@@ -12,4 +12,5 @@ public interface IPersonDao {
     public void delete(Person t);
     public void update(Person t);
     public List<String> getPinYinNameList();
+    public boolean contain(Person p);
 }

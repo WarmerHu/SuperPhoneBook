@@ -38,7 +38,6 @@ public class BTreeMap<K extends Comparable<K>,V> implements Map<K, V>{
     }
     
     public BTreeMap(Comparator<K> keyComparator) {
-	
 	this(DEFAULT_M, keyComparator);
     }
     
@@ -102,6 +101,9 @@ public class BTreeMap<K extends Comparable<K>,V> implements Map<K, V>{
     
     @SuppressWarnings("unchecked")
     public V remove(Object key) {
+	if(keySet.contains(key)) {
+	    keySet.remove(key);
+	}
 	V value = get(key);
 	Pair p = new Pair();
 	p.k = (K) key;
@@ -250,7 +252,6 @@ public class BTreeMap<K extends Comparable<K>,V> implements Map<K, V>{
     }
     
     private void sliptChild(BTreeNode x, int index) {
-        // �������
 	BTreeNode z = new BTreeNode();
 	BTreeNode y = x.children.get(index);
         z.isLeaf = y.isLeaf;
@@ -296,21 +297,17 @@ public class BTreeMap<K extends Comparable<K>,V> implements Map<K, V>{
             i ++;
         if (i < n && p.k.equals(x.pairs.get(i).k)) {
             if (x.isLeaf) {
-                // 1 �����ǰ�����Ҷ�ӽ�㣬ֱ��ɾ���ؼ���
                 x.remove(i);
             } else {
                 BTreeNode left = x.children.get(i);
                 BTreeNode right = x.children.get(i + 1); 
                 if (left.keynum >= m) {
-                    // 2.a
                     Pair pre = deleteMaxKey(left);
                     x.pairs.set(i, pre);
                 } else if (right.keynum >= m) {
-                    // 2.b
                     Pair next = deleteMinKey(right);
                     x.pairs.set(i, next);
                 } else {
-                    // 2.c
                     int lSize = left.keynum;
                     int rSize = right.keynum;
                     left.insert(lSize, p);
@@ -335,7 +332,6 @@ public class BTreeMap<K extends Comparable<K>,V> implements Map<K, V>{
                 }
             }
         } else if (x.isLeaf) {
-            // û���ҵ��ùؼ��֣�ֱ�ӷ���
             return;
         } else {
             BTreeNode child = x.children.get(i);
@@ -343,7 +339,6 @@ public class BTreeMap<K extends Comparable<K>,V> implements Map<K, V>{
             if (child.keynum >= m) {
                 delete(child, p);
             } else if (i > 0 && x.children.get(i - 1).keynum >= m){
-                // 3.a ���ֵ���������
                 BTreeNode leftBrother = x.children.get(i - 1);
                 int leftBrotherKeyNum = leftBrother.keynum;
                 Pair leftBrotherLastPair = leftBrother.pairs.get(leftBrotherKeyNum - 1);
@@ -357,7 +352,6 @@ public class BTreeMap<K extends Comparable<K>,V> implements Map<K, V>{
                 leftBrother.remove(leftBrotherKeyNum - 1);
                 delete(child, p);
             } else if (i < x.keynum && x.children.get(i + 1).keynum >= m) {
-                // 3.a ���ֵ���������
                 BTreeNode rightBrother = x.children.get(i + 1);
                 Pair rightBrotherFirstPair = rightBrother.pairs.get(0);
                 int childKeyNum = child.keynum;
@@ -371,7 +365,6 @@ public class BTreeMap<K extends Comparable<K>,V> implements Map<K, V>{
                 rightBrother.remove(0);
                 delete(child, p);
             } else if (i > 0){
-                // 3.b �������ֵܣ��ϲ�
                 BTreeNode leftBrother = x.children.get(i - 1);
                 int leftBrotherKeyNum = leftBrother.keynum;
                 leftBrother.insert(leftBrotherKeyNum, x.pairs.get(i - 1));
@@ -393,7 +386,6 @@ public class BTreeMap<K extends Comparable<K>,V> implements Map<K, V>{
                 }
                 delete(leftBrother, p);
             } else {
-                // 3.b �������ֵܣ��ϲ�
                 BTreeNode rightBrother = x.children.get(i + 1);
                 int childKeyNum = child.keynum;
                 child.insert(childKeyNum, x.pairs.get(i));
@@ -429,7 +421,6 @@ public class BTreeMap<K extends Comparable<K>,V> implements Map<K, V>{
             if (child.keynum >= m) {
                 return deleteMinKey(child);
             } else if (rightBrother.keynum >= m){
-                // 3.a
         	Pair rightBrotherFirstPair = rightBrother.pairs.get(0);
                 int childKeyNum = child.keynum;
                 child.insert(childKeyNum, x.pairs.get(0));
@@ -442,7 +433,6 @@ public class BTreeMap<K extends Comparable<K>,V> implements Map<K, V>{
                 rightBrother.remove(0);
                 return deleteMinKey(child);
             } else {
-                // 3.b
                 int childKeyNum = child.keynum;
                 child.insert(childKeyNum, x.pairs.get(0));
                 childKeyNum ++;
@@ -477,7 +467,6 @@ public class BTreeMap<K extends Comparable<K>,V> implements Map<K, V>{
             if (child.keynum >= m) {
                 return deleteMaxKey(child);
             } else if (leftBrother.keynum >= m){
-                // 3.a
         	Pair leftPair = leftBrother.pairs.get(leftBrotherKeyNum - 1);
                 child.insert(0, x.pairs.get(keyNum - 1));
                 x.pairs.set(keyNum - 1, leftPair);
@@ -489,7 +478,6 @@ public class BTreeMap<K extends Comparable<K>,V> implements Map<K, V>{
                 leftBrother.remove(leftBrotherKeyNum - 1);
                 return deleteMaxKey(child);
             } else {
-                // 3.b
                 leftBrother.insert(leftBrotherKeyNum, x.pairs.get(keyNum - 1));
                 leftBrotherKeyNum ++;
                 for (int j = 0; j < m - 1; j ++) {
@@ -502,7 +490,6 @@ public class BTreeMap<K extends Comparable<K>,V> implements Map<K, V>{
                 if (!isChildLeaf) {
                     leftBrother.insertChild(leftBrotherKeyNum, child.children.get(m - 1));
                 }
-                // ɾ���ؼ��ֺͺ��ӵĲ�����÷��ں�����ִ��
                 x.removeChild(keyNum);
                 x.remove(keyNum - 1);
                 return deleteMaxKey(leftBrother);

@@ -7,11 +7,11 @@ import com.superphonebook.model.Person;
 public interface IPersonService {
 
     List<String> getDefaultNameList();
-
-    void savePerson(Person p);
-
+    void save(Person p);
+    void update(Person p);
     Person getPersonByName(String personName);
-
     List<String> findNameListbyString(String s);
+    void delete(String string);
+    void saveOrUpdatePerson(Person p);
 
 }

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="editarray">
+        <item>查看</item>
+        <item>编辑</item>
+        <item>删除</item>
+    </string-array>
+</resources>
